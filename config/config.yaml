@@ -41,7 +41,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true                        # 是否启用调度系统（true=启用, false=关闭，默认关闭）
-  preset: "office_hours"             # 预设模板名称（见上方说明）
+  preset: "morning_evening"             # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -116,14 +116,6 @@ platforms:
       name: "格隆汇"
       expected_domain: "gelonghui.com"
 
-    # 法布财经
-    - id: "fastbull-express"
-      name: "法布财经快讯"
-      expected_domain: "fastbull.cn"
-    - id: "fastbull-news"
-      name: "法布财经头条"
-      expected_domain: "fastbull.cn"
-
     # MKTNews
     - id: "mktnews-flash"
       name: "MKTNews快讯"
@@ -139,7 +131,7 @@ platforms:
 # max_age_days: 可选，覆盖全局 freshness_filter.max_age_days
 # ===============================================================
 rss:
-  enabled: true                       # 是否启用 RSS 抓取（true=启用, false=关闭）
+  enabled: false                      # 是否启用 RSS 抓取（true=启用, false=关闭）
 
   # 文章新鲜度过滤（过滤超龄旧文章，避免重复推送）
   # 仅在推送阶段过滤，所有文章仍会存入数据库
@@ -416,7 +408,7 @@ ai:
   # 完整列表: https://docs.litellm.ai/docs/providers
   # 如果你对于看英文文档比较头疼，那么可以点击页面右下角的 【Ask AI】 ,用中文询问怎么配置
 
-  model: "openai/ep-20260708203644-82c9h"
+  model: "openai/ep-m-20260205104625-4rgcj"
 
   api_key: "ark-5bdfabb8-75b5-4453-99b6-0654f846cbb4-4eb5e"       # API Key（建议使用环境变量 AI_API_KEY）
   
@@ -441,7 +433,7 @@ ai:
                                     #    这样几乎任何服务商都能接入。
 
 
-  timeout: 120                      # 请求超时（秒）
+  timeout: 300                      # 请求超时（秒）
 
   temperature: 1.0                  # 采样温度 (0.0-2.0)
                                     # 注意：部分模型(如 gpt-5)可能要求必须为 1.0，否则会报错
