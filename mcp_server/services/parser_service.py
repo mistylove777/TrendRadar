@@ -83,7 +83,9 @@ class ParserService:
         self,
         date: datetime = None,
         platform_ids: Optional[List[str]] = None,
-        db_type: str = "news"
+        db_type: str = "news",
+        time_start: str = None,   # 新增
+        time_end: str = None,     # 新增
     ) -> Optional[Tuple[Dict, Dict, Dict]]:
         """
         从 SQLite 数据库读取数据
@@ -110,7 +112,7 @@ class ParserService:
             cursor = conn.cursor()
 
             if db_type == "news":
-                return self._read_news_from_sqlite(cursor, platform_ids, all_titles, id_to_name, all_timestamps)
+                return self._read_news_from_sqlite(cursor, platform_ids, all_titles, id_to_name, all_timestamps,time_start=time_start, time_end=time_end)
             elif db_type == "rss":
                 return self._read_rss_from_sqlite(cursor, platform_ids, all_titles, id_to_name, all_timestamps)
 
@@ -121,16 +123,84 @@ class ParserService:
             if 'conn' in locals():
                 conn.close()
 
+    def read_titles_for_trade_session(
+        self,
+        now: datetime = None,
+        platform_ids: Optional[List[str]] = None,
+        db_type: str = "news"
+    ) -> Tuple[Dict, Dict, Dict]:
+        """
+        按交易时段读取数据（跨自然日 db + 时间过滤）
+        
+        早盘窗口：前一天12:40 ~ 当天9:00
+        午盘窗口：当天9:00 ~ 当天12:40
+        """
+        from datetime import timedelta
+        
+        if now is None:
+            now = datetime.now()
+        
+        today = now.date()
+        yesterday = today - timedelta(days=1)
+        
+        # 判断当前属于哪个窗口
+        nine_am = datetime.combine(today, datetime.min.time()).replace(hour=9)
+        twelve_forty = datetime.combine(today, datetime.min.time()).replace(hour=12, minute=40)
+        
+        if now.hour >= 12:
+            # 午盘窗口：昨天 12:40 ~ 今天 12:40（24小时）
+            session_start = datetime.combine(yesterday, datetime.min.time()).replace(hour=12, minute=40)
+            session_end = twelve_forty
+            dates_to_read = [yesterday, today]
+        else:
+            # 早盘窗口：昨天 09:00 ~ 今天 09:00（24小时）
+            session_start = datetime.combine(yesterday, datetime.min.time()).replace(hour=9)
+            session_end = nine_am
+            dates_to_read = [yesterday, today]
+        
+        start_str = session_start.strftime("%Y-%m-%d %H:%M:%S")
+        end_str = session_end.strftime("%Y-%m-%d %H:%M:%S")
+        print(f"[因子读取] 时间窗口: {start_str} ~ {end_str}")
+        all_titles = {}
+        id_to_name = {}
+        all_timestamps = {}
+        
+        for d in dates_to_read:
+            result = self._read_from_sqlite(
+                date=datetime.combine(d, datetime.min.time()),
+                platform_ids=platform_ids,
+                db_type=db_type,
+                time_start=start_str,
+                time_end=end_str,
+            )
+            if not result:
+                continue
+            day_titles, day_names, day_timestamps = result
+            id_to_name.update(day_names)
+            all_timestamps.update(day_timestamps)
+            for pid, titles in day_titles.items():
+                if pid not in all_titles:
+                    all_titles[pid] = {}
+                all_titles[pid].update(titles)
+        
+        if not all_titles:
+            from ..utils.errors import DataNotFoundError
+            raise DataNotFoundError(f"无数据: {start_str} ~ {end_str}")
+        
+        return all_titles, id_to_name, all_timestamps
+
+
     def _read_news_from_sqlite(
         self,
         cursor,
         platform_ids: Optional[List[str]],
         all_titles: Dict,
         id_to_name: Dict,
-        all_timestamps: Dict
+        all_timestamps: Dict,
+        time_start: str = None,   # 新增
+        time_end: str = None,     # 新增
     ) -> Optional[Tuple[Dict, Dict, Dict]]:
         """从热榜数据库读取数据"""
-        # 检查表是否存在
         cursor.execute("""
             SELECT name FROM sqlite_master
             WHERE type='table' AND name='news_items'
@@ -138,26 +208,34 @@ class ParserService:
         if not cursor.fetchone():
             return None
 
-        # 构建查询
+        # ===== 构建查询，加时间过滤条件 =====
+        where_clauses = []
+        params = []
+
         if platform_ids:
             placeholders = ','.join(['?' for _ in platform_ids])
-            query = f"""
-                SELECT n.id, n.platform_id, p.name as platform_name, n.title,
-                       n.rank, n.url, n.mobile_url,
-                       n.first_crawl_time, n.last_crawl_time, n.crawl_count
-                FROM news_items n
-                LEFT JOIN platforms p ON n.platform_id = p.id
-                WHERE n.platform_id IN ({placeholders})
-            """
-            cursor.execute(query, platform_ids)
-        else:
-            cursor.execute("""
-                SELECT n.id, n.platform_id, p.name as platform_name, n.title,
-                       n.rank, n.url, n.mobile_url,
-                       n.first_crawl_time, n.last_crawl_time, n.crawl_count
-                FROM news_items n
-                LEFT JOIN platforms p ON n.platform_id = p.id
-            """)
+            where_clauses.append(f"n.platform_id IN ({placeholders})")
+            params.extend(platform_ids)
+
+        if time_start:
+            where_clauses.append("n.last_crawl_time >= ?")
+            params.append(time_start)
+        if time_end:
+            where_clauses.append("n.first_crawl_time <= ?")
+            params.append(time_end)
+
+        where_sql = "WHERE " + " AND ".join(where_clauses) if where_clauses else ""
+
+        query = f"""
+            SELECT n.id, n.platform_id, p.name as platform_name, n.title,
+                   n.rank, n.url, n.mobile_url,
+                   n.first_crawl_time, n.last_crawl_time, n.crawl_count
+            FROM news_items n
+            LEFT JOIN platforms p ON n.platform_id = p.id
+            {where_sql}
+        """
+        cursor.execute(query, params)
+        # =====================================
 
         rows = cursor.fetchall()
 
@@ -195,6 +273,7 @@ class ParserService:
             ranks = rank_history_map.get(news_id, [row['rank']])
 
             all_titles[platform_id][title] = {
+                "news_item_id": news_id,
                 "ranks": ranks,
                 "url": row['url'] or "",
                 "mobileUrl": row['mobile_url'] or "",

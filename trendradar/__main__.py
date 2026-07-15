@@ -253,21 +253,16 @@ class NewsAnalyzer:
                 return stats, current_id_to_name
 
             elif ai_mode in ["daily", "current"]:
-                # 加载历史数据
-                analysis_data = self._load_analysis_data(quiet=True)
-                if not analysis_data:
-                    print(f"[AI] 无法加载历史数据用于 {ai_mode} 模式分析")
+                # AI 因子分析：按交易时段窗口读取（早盘/午盘）
+                all_results, id_to_name, title_info = self.ctx.read_titles_for_trade_session(
+                    platform_ids=self.ctx.platform_ids,
+                    quiet=True,
+                )
+                if not all_results:
+                    print(f"[AI] 交易时段无数据，跳过分析")
                     return [], None
 
-                (
-                    all_results,
-                    id_to_name,
-                    title_info,
-                    new_titles,
-                    _,
-                    _,
-                    _,
-                ) = analysis_data
+                new_titles = {}  # 交易时段模式跳过新增检测
 
                 # 统计计算
                 stats, _ = self.ctx.count_frequency(

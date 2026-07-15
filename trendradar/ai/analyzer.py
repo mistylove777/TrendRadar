@@ -100,6 +100,35 @@ class AIAnalyzer:
             label="AI",
         )
 
+    def _save_factor_result(self, result: AIAnalysisResult):
+        """保存量化因子JSON到文件"""
+        import os
+        from datetime import datetime
+        
+        if not result.success or not result.raw_response:
+            return
+        
+        # 输出目录
+        output_dir = "output/ai_factor"
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # 判断时段：12点前早盘，12点后午盘
+        now = self.get_time_func()
+        session = "morning" if now.hour < 12 else "midday"
+        
+        # 文件名：日期_时段.json
+        date_str = now.strftime("%Y-%m-%d")
+        filename = f"{date_str}_{session}.json"
+        filepath = os.path.join(output_dir, filename)
+        
+        # 直接保存原始JSON响应
+        try:
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(result.raw_response.strip())
+            print(f"[AI] 因子已保存: {filepath}")
+        except Exception as e:
+            print(f"[AI] 因子保存失败: {e}")
+
     def analyze(
         self,
         stats: List[Dict],
@@ -176,6 +205,16 @@ class AIAnalyzer:
         user_prompt = user_prompt.replace("{report_mode}", report_mode)
         user_prompt = user_prompt.replace("{report_type}", report_type)
         user_prompt = user_prompt.replace("{current_time}", current_time)
+
+        # 加这一行：判断时段类型
+        now = self.get_time_func()
+        is_monday = now.weekday() == 0
+        if now.hour < 12:
+            session_type = "weekend_morning" if is_monday else "weekday_morning"
+        else:
+            session_type = "weekday_midday"
+        user_prompt = user_prompt.replace("{session_type}", session_type)
+        
         user_prompt = user_prompt.replace("{news_count}", str(prepared.hotlist_total))
         user_prompt = user_prompt.replace("{rss_count}", str(prepared.rss_total))
         user_prompt = user_prompt.replace("{platforms}", ", ".join(platforms) if platforms else "多平台")
@@ -237,6 +276,11 @@ class AIAnalyzer:
             result.max_news_limit = self.max_news
             result.include_rss = self.include_rss
             result.include_standalone = self.include_standalone
+
+            # ===== 在这里加保存代码 =====
+            self._save_factor_result(result)
+            # ===========================
+
             return result
         except Exception as e:
             error_type = type(e).__name__
@@ -284,10 +328,13 @@ class AIAnalyzer:
                         source = t.get("source_name", t.get("source", ""))
 
                         # 构建行
+                        news_id = t.get("news_item_id", "")
+                        id_prefix = f"[{news_id}] " if news_id else ""
+
                         if source:
-                            line = f"- [{source}] {title}"
+                            line = f"- {id_prefix}[{source}] {title}"
                         else:
-                            line = f"- {title}"
+                            line = f"- {id_prefix}{title}"
 
                         # 始终显示简化格式：排名范围 + 时间范围 + 出现次数
                         ranks = t.get("ranks", [])

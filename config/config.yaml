@@ -41,7 +41,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true                        # 是否启用调度系统（true=启用, false=关闭，默认关闭）
-  preset: "morning_evening"             # 预设模板名称（见上方说明）
+  preset: "custom"             # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -408,9 +408,9 @@ ai:
   # 完整列表: https://docs.litellm.ai/docs/providers
   # 如果你对于看英文文档比较头疼，那么可以点击页面右下角的 【Ask AI】 ,用中文询问怎么配置
 
-  model: "openai/ep-m-20260205104625-4rgcj"
+  model: "openai/ep-20260714180654-xqtvs"
 
-  api_key: "ark-5bdfabb8-75b5-4453-99b6-0654f846cbb4-4eb5e"       # API Key（建议使用环境变量 AI_API_KEY）
+  api_key: "ark-5bdfabb8-75b5-4453-99b6-0654f846cbb4-4eb5e"       
   
   api_base: "https://ark.cn-beijing.volces.com/api/v3"        # 自定义 API 地址（可选，绝大多数情况留空即可）
                                     #
@@ -462,7 +462,7 @@ ai_analysis:
   language: "Chinese"               # 分析报告语言（如 "English", "Korean", "法语"）
   prompt_file: "ai_analysis_prompt.txt"   # 提示词文件（相对于 config 目录）
 
-  mode: "follow_report"             # AI 分析模式（可独立于 report.mode）
+  mode: "daily"             # AI 分析模式（可独立于 report.mode）
                                     # follow_report = 跟随 report.mode（默认）
                                     # daily / current / incremental = 强制使用指定模式
 

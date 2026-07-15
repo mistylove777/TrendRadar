@@ -222,6 +222,39 @@ class AppContext:
         """读取当天所有标题"""
         return read_all_today_titles(self.get_storage_manager(), platform_ids, quiet=quiet)
 
+    def read_titles_for_trade_session(
+        self, platform_ids: Optional[List[str]] = None, quiet: bool = False
+    ) -> Tuple[Dict, Dict, Dict]:
+        """按交易时段读取新闻数据（早盘/午盘窗口）"""
+        from trendradar.services.parser_service import ParserService
+        
+        parser = ParserService()
+        all_results, id_to_name, timestamps = parser.read_titles_for_trade_session(
+            now=self.get_time(),
+            platform_ids=platform_ids,
+            db_type="news"
+        )
+        
+        # 构建 title_info（和 read_today_titles 返回格式对齐）
+        title_info = {}
+        for platform_id, titles in all_results.items():
+            title_info[platform_id] = {}
+            for title, info in titles.items():
+                title_info[platform_id][title] = {
+                    "first_time": info.get("first_time", ""),
+                    "last_time": info.get("last_time", ""),
+                    "count": info.get("count", 1),
+                    "ranks": info.get("ranks", []),
+                    "url": info.get("url", ""),
+                    "mobileUrl": info.get("mobileUrl", ""),
+                }
+        
+        if not quiet:
+            total = sum(len(t) for t in all_results.values())
+            print(f"交易时段读取: {total} 条新闻")
+        
+        return all_results, id_to_name, title_info
+
     def detect_new_titles(
         self, platform_ids: Optional[List[str]] = None, quiet: bool = False
     ) -> Dict:

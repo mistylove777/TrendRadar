@@ -1,0 +1,205 @@
+{
+  "liquidity_score": -1,
+  "policy_score": 3,
+  "geopolitical_risk": -10,
+  "expectation_change": 2,
+  "growth_expectation": 12,
+  "weekend_morning_news_attention": 0,
+  "weekday_morning_news_attention": 0,
+  "weekday_midday_news_attention": 32,
+  "news_analysis": [
+    {
+      "news_item_id": 1,
+      "title": "[澎湃新闻] 习近平将出席2026世界人工智能大会暨人工智能全球治理高级别会议开幕式并发表主旨讲话 | 排名:1 | 时间:10:26~14:57 | 出现:7次 | 轨迹:1(10:26)→1(10:28)→1(10:54)→1(13:41)→1(14:05)→1(14:11)→1(14:57)",
+      "summary": "习近平主席将出席世界人工智能大会开幕式并发表主旨讲话，释放政策利好信号。",
+      "risk_assessment": "重大利好，政策因子驱动，提振AI板块信心，降低市场不确定性。"
+    },
+    {
+      "news_item_id": 2,
+      "title": "[澎湃新闻] 五大亮点提前看！世界人工智能大会本周开幕：智慧、硬核、体验、年轻、治理 | 排名:2 | 时间:10:26~14:57 | 出现:7次 | 轨迹:2(10:26)→2(10:28)→2(10:54)→2(13:41)→2(14:05)→2(14:11)→2(14:57)",
+      "summary": "世界人工智能大会即将开幕，展示五大亮点，提升AI产业关注度。",
+      "risk_assessment": "轻微利好，增长预期因子，强化AI行业景气度预期。"
+    },
+    {
+      "news_item_id": 3,
+      "title": "[华尔街见闻最新] AI投资热潮驱动！中国6月出口同比大增27%远超预期，创逾四年新高，上半年出口同比增长17.6% | 排名:1-12 | 时间:10:26~14:57 | 出现:7次 | 轨迹:1(10:26)→1(10:28)→1(10:54)→10(13:41)→11(14:05)→11(14:11)→12(14:57)",
+      "summary": "中国6月出口同比增长27%远超预期，创四年新高，主要由AI投资热潮驱动。",
+      "risk_assessment": "重大利好，预期变化因子，经济数据超预期提振市场信心。"
+    },
+    {
+      "news_item_id": 4,
+      "title": "[今日头条] 解锁2026世界人工智能大会新亮点 | 排名:3 | 时间:10:26~10:54 | 出现:3次 | 轨迹:3(10:26)→3(10:28)→3(10:54)",
+      "summary": "介绍世界人工智能大会新亮点，强化产业预期。",
+      "risk_assessment": "轻微利好，增长预期因子，提升AI板块关注度。"
+    },
+    {
+      "news_item_id": 5,
+      "title": "[澎湃新闻] AI时代需要什么样的人：从DeepSeek招聘清单说起 | 排名:8-15 | 时间:10:26~18:23 | 出现:9次 | 轨迹:15(10:26)→15(10:28)→15(10:54)→15(13:41)→15(14:05)→15(14:11)→15(14:57)→8(18:22)→8(18:23)",
+      "summary": "通过DeepSeek招聘分析AI人才需求，反映行业高景气。",
+      "risk_assessment": "轻微利好，增长预期因子，AI产业持续扩张预期。"
+    },
+    {
+      "news_item_id": 6,
+      "title": "[华尔街见闻最新] WAIC大会前瞻：从\"单点突破\"到\"系统化产业兑现\"，国产算力能否加速崛起？ | 排名:10-27 | 时间:10:26~14:57 | 出现:7次 | 轨迹:10(10:26)→10(10:28)→13(10:54)→25(13:41)→26(14:05)→26(14:11)→27(14:57)",
+      "summary": "WAIC前瞻讨论国产算力崛起可能性，产业趋势积极。",
+      "risk_assessment": "轻微利好，增长预期因子，国产算力发展预期增强。"
+    },
+    {
+      "news_item_id": 7,
+      "title": "[华尔街见闻最新] AI交易崩了？债市\"撞飞\"了股市 | 排名:12-29 | 时间:10:26~14:57 | 出现:7次 | 轨迹:12(10:26)→12(10:28)→15(10:54)→27(13:41)→28(14:05)→28(14:11)→29(14:57)",
+      "summary": "债市收益率上升冲击股市，AI交易承压。",
+      "risk_assessment": "轻微利空，预期变化因子，市场情绪转弱，AI板块面临调整压力。"
+    },
+    {
+      "news_item_id": 8,
+      "title": "[财联社深度] 小K播早报|2026世界人工智能大会将于7月17日开幕 《国民健康\"十五五\"规划》发布 | 排名:8 | 时间:10:26~10:54 | 出现:3次 | 轨迹:8(10:26)→8(10:28)→8(10:54)",
+      "summary": "WAIC开幕时间确定，同时健康十五五规划发布。",
+      "risk_assessment": "轻微利好，增长预期因子，AI大会开幕提振产业信心。"
+    },
+    {
+      "news_item_id": 9,
+      "title": "[华尔街见闻最新] 三星遭美国消费者集体反垄断诉讼：三季涨四倍后，AI存储盛宴的第一张法律\"罚单\" | 排名:24 | 时间:10:26~10:28 | 出现:2次 | 轨迹:24(10:26)→24(10:28)",
+      "summary": "三星遭美国集体反垄断诉讼，涉及AI存储业务。",
+      "risk_assessment": "轻微利空，预期变化因子，存储行业法律风险上升，影响市场预期。"
+    },
+    {
+      "news_item_id": 10,
+      "title": "[金十数据] 海关总署：上半年我国电子元件、电脑零部件等算力硬件进出口5.13万亿元，增长56.6% | 排名:11 | 时间:10:26~10:28 | 出现:2次 | 轨迹:11(10:26)→11(10:28)",
+      "summary": "上半年算力硬件进出口增长56.6%，显示AI硬件需求强劲。",
+      "risk_assessment": "重大利好，增长预期因子，算力硬件景气度超预期。"
+    },
+    {
+      "news_item_id": 11,
+      "title": "[财联社电报] 财联社7月14日电，软银推出基于OPENAI技术的网络安全服务。 | 排名:14 | 时间:10:54 | 出现:1次 | 轨迹:14(10:54)",
+      "summary": "软银推出基于OpenAI的网络安全服务，拓展AI应用。",
+      "risk_assessment": "轻微利好，增长预期因子，AI应用场景扩大。"
+    },
+    {
+      "news_item_id": 12,
+      "title": "[华尔街见闻快讯] 海关总署：中国出口连续11季度保持增长 贸易增量集中于AI领域 | 排名:19 | 时间:10:54 | 出现:1次 | 轨迹:19(10:54)",
+      "summary": "中国出口连续11季度增长，AI领域贡献增量。",
+      "risk_assessment": "轻微利好，增长预期因子，出口结构优化利好AI产业链。"
+    },
+    {
+      "news_item_id": 13,
+      "title": "[财联社电报] CPO概念震荡反弹 长光华芯涨10% | 排名:20 | 时间:10:54 | 出现:1次 | 轨迹:20(10:54)",
+      "summary": "CPO概念股反弹，长光华芯涨10%。",
+      "risk_assessment": "轻微利好，增长预期因子，AI算力板块活跃。"
+    },
+    {
+      "news_item_id": 14,
+      "title": "[格隆汇] 大行评级丨Evercore ISI：大幅上调闪迪目标价至3100美元，维持\"跑赢大市\"评级 | 排名:7-13 | 时间:10:26~10:54 | 出现:3次 | 轨迹:7(10:26)→13(10:28)→13(10:54)",
+      "summary": "Evercore ISI大幅上调闪迪目标价至3100美元，看好存储行业。",
+      "risk_assessment": "轻微利好，增长预期因子，存储板块获机构看好。"
+    },
+    {
+      "news_item_id": 15,
+      "title": "[格隆汇] 港股异动丨航空板块走低 东航跌近4% 美伊冲突引爆油价突破80美元 | 排名:5 | 时间:10:28~10:54 | 出现:2次 | 轨迹:5(10:28)→5(10:54)",
+      "summary": "美伊冲突导致油价突破80美元，航空板块下跌。",
+      "risk_assessment": "重大利空，地缘风险因子，油价暴涨推升成本，冲击经济。"
+    },
+    {
+      "news_item_id": 16,
+      "title": "[格隆汇] 港股早评：三大指数小幅低开，油价暴涨石油股强势，芯片半导体集体回暖 | 排名:5-11 | 时间:10:26~10:54 | 出现:3次 | 轨迹:5(10:26)→11(10:28)→11(10:54)",
+      "summary": "港股早盘低开，油价暴涨带动石油股走强，芯片半导体回暖。",
+      "risk_assessment": "重大利空，地缘风险因子，油价暴涨加剧通胀担忧。"
+    },
+    {
+      "news_item_id": 17,
+      "title": "[财联社深度] 港股早报｜国务院批复扩大消费十五五规划 热门中概股多数走低 | 排名:17 | 时间:10:26~10:54 | 出现:3次 | 轨迹:17(10:26)→17(10:28)→17(10:54)",
+      "summary": "国务院批复扩大消费十五五规划，利好消费板块。",
+      "risk_assessment": "轻微利好，政策因子，消费刺激政策出台。"
+    },
+    {
+      "news_item_id": 18,
+      "title": "[MKTNews快讯] Iranian media report explosion at US military base in Kuwait | 排名:6-14 | 时间:10:26~10:54 | 出现:3次 | 轨迹:6(10:26)→6(10:28)→14(10:54)",
+      "summary": "伊朗媒体报道美军基地在科威特发生爆炸，地区紧张局势升级。",
+      "risk_assessment": "重大利空，地缘风险因子，中东冲突加剧。"
+    },
+    {
+      "news_item_id": 19,
+      "title": "[MKTNews快讯] A-share PCB theme extended: Xintong Electronics posted a second consecutive limit-up; Foster, Shengyi Technology, Xianfeng Holdings, Guanghe Technology and Huazheng New Materials hit daily limit; International Composite Materials, Minbao Optoelectronics and Zecheng Electronics rose over 10%. | 排名:7 | 时间:10:54 | 出现:1次 | 轨迹:7(10:54)",
+      "summary": "A股PCB主题延续强势，多股涨停。",
+      "risk_assessment": "轻微利好，增长预期因子，PCB板块景气度高。"
+    },
+    {
+      "news_item_id": 20,
+      "title": "[MKTNews快讯] Shanghai Composite turned positive, reclaiming the 3,900 level; Shenzhen Composite Index rose 0.71% and the ChiNext Index gained 1.2%, led by genetically modified-crop, PCB and pharmaceutical e-commerce stocks. | 排名:9-17 | 时间:10:26~10:54 | 出现:3次 | 轨迹:9(10:26)→9(10:28)→17(10:54)",
+      "summary": "上证综指重回3900点，创业板涨1.2%。",
+      "risk_assessment": "轻微利好，预期变化因子，市场情绪回暖。"
+    },
+    {
+      "news_item_id": 21,
+      "title": "[MKTNews快讯] CUSTOMS says China's foreign trade will face some pressure in H2, but sustained innovation momentum, strong enterprise dynamism and high openness mean trade fundamentals remain solid and the positive development momentum is likely to continue. | 排名:10-18 | 时间:10:26~10:54 | 出现:3次 | 轨迹:10(10:26)→10(10:28)→18(10:54)",
+      "summary": "海关总署称下半年外贸面临压力，但基本面稳固。",
+      "risk_assessment": "轻微利空，增长预期因子，外贸放缓预期施压。"
+    },
+    {
+      "news_item_id": 22,
+      "title": "[财联社深度] “AI+IP”双轮驱动 AI漫剧行业景气度持续上行 | 排名:14 | 时间:10:26~10:54 | 出现:3次 | 轨迹:14(10:26)→14(10:28)→14(10:54)",
+      "summary": "AI漫剧行业景气度上行，AI+IP模式驱动。",
+      "risk_assessment": "轻微利好，增长预期因子，AI应用领域扩展。"
+    },
+    {
+      "news_item_id": 23,
+      "title": "[MKTNews快讯] China A-share semiconductor materials sector fell intraday; Shanghai Hejing dropped over 10%, with Youyan Silicon, Hu Silicon Industry, Zhenbao Technology and Zhongjing Technology also sliding. | 排名:22-30 | 时间:10:26~10:54 | 出现:3次 | 轨迹:22(10:26)→22(10:28)→30(10:54)",
+      "summary": "A股半导体材料板块下跌，上海合晶跌超10%。",
+      "risk_assessment": "轻微利空，增长预期因子，半导体材料板块回调。"
+    },
+    {
+      "news_item_id": 24,
+      "title": "[华尔街见闻快讯] 软银CEO孙正义：询问AI是否存在泡沫是“极其愚蠢的”。 | 排名:18 | 时间:10:26~10:28 | 出现:2次 | 轨迹:18(10:26)→18(10:28)",
+      "summary": "孙正义认为询问AI泡沫极其愚蠢，表达对AI的坚定看好。",
+      "risk_assessment": "轻微利好，预期变化因子，提振AI市场信心。"
+    },
+    {
+      "news_item_id": 25,
+      "title": "[MKTNews快讯] IRGC says it attacked US targets in Bahrain | 排名:26 | 时间:10:26~10:28 | 出现:2次 | 轨迹:26(10:26)→26(10:28)",
+      "summary": "伊朗革命卫队声称攻击了巴林的美军目标。",
+      "risk_assessment": "重大利空，地缘风险因子，中东冲突升级。"
+    },
+    {
+      "news_item_id": 26,
+      "title": "[MKTNews快讯] ChiNext index extends gains to 1.00%; China’s Shanghai Composite Index down 0.01%; Shenzhen Composite Index up 0.43%. | 排名:28 | 时间:10:26~10:28 | 出现:2次 | 轨迹:28(10:26)→28(10:28)",
+      "summary": "创业板指涨1%，上证微跌。",
+      "risk_assessment": "轻微利好，预期变化因子，创业板表现强势。"
+    },
+    {
+      "news_item_id": 27,
+      "title": "[MKTNews快讯] Iran's Islamic Revolutionary Guard Corps (IRGC) said it struck a weapons depot, a satellite communications center and US military barracks at Bahrain's Juffair base. | 排名:30 | 时间:10:26~10:28 | 出现:2次 | 轨迹:30(10:26)→30(10:28)",
+      "summary": "伊朗革命卫队袭击了巴林基地的武器库和美军设施。",
+      "risk_assessment": "重大利空，地缘风险因子，中东冲突进一步加剧。"
+    },
+    {
+      "news_item_id": 28,
+      "title": "[财联社电报] AI服务器概念震荡下挫 中国长城封跌停 | 排名:2 | 时间:10:54 | 出现:1次 | 轨迹:2(10:54)",
+      "summary": "AI服务器概念下跌，中国长城跌停。",
+      "risk_assessment": "轻微利空，增长预期因子，AI硬件板块回调。"
+    },
+    {
+      "news_item_id": 29,
+      "title": "[华尔街见闻最新] AI的钱，债券市场快供不起了，收益率必须更高 | 排名:2-17 | 时间:10:54~14:57 | 出现:5次 | 轨迹:2(10:54)→15(13:41)→16(14:05)→16(14:11)→17(14:57)",
+      "summary": "债券市场对AI投资资金需求承压，收益率上行压力大。",
+      "risk_assessment": "轻微利空，流动性因子，资金成本上升。"
+    },
+    {
+      "news_item_id": 30,
+      "title": "[华尔街见闻] AI债务泡沫要破了？高盛首次公开承认：市场承接能力逼近极限 | 排名:8-10 | 时间:10:26~14:57 | 出现:7次 | 轨迹:10(10:26)→10(10:28)→10(10:54)→9(13:41)→9(14:05)→9(14:11)→8(14:57)",
+      "summary": "高盛承认市场对AI债务的承接能力逼近极限。",
+      "risk_assessment": "轻微利空，预期变化因子，AI融资担忧升温。"
+    },
+    {
+      "news_item_id": 31,
+      "title": "[澎湃新闻] 当AI穿上白大褂：谁来唤醒沉睡的医疗数据？ | 排名:12-17 | 时间:10:26~18:23 | 出现:9次 | 轨迹:17(10:26)→17(10:28)→17(10:54)→17(13:41)→17(14:05)→17(14:11)→17(14:57)→12(18:22)→12(18:23)",
+      "summary": "AI在医疗领域应用前景广阔，但数据问题待解决。",
+      "risk_assessment": "轻微利好，增长预期因子，AI医疗赛道预期向好。"
+    },
+    {
+      "news_item_id": 32,
+      "title": "[华尔街见闻最新] 重要信号已现！付鹏深度解析AI产业链周期【付鹏说29】 | 排名:15-18 | 时间:10:26~10:54 | 出现:3次 | 轨迹:15(10:26)→15(10:28)→18(10:54)",
+      "summary": "付鹏深度解析AI产业链周期，释放积极信号。",
+      "risk_assessment": "轻微利好，增长预期因子，市场对AI产业周期乐观。"
+    }
+  ],
+  "overall_risk_assessment": "综合上午盘信息，地缘风险显著上升（美伊冲突多起事件），对市场形成较强利空压力，但国内AI产业利好密集（出口数据超预期、WAIC大会、算力硬件高增长），经济数据超预期提振市场情绪，上证指数重回3900点。整体风险偏中性偏多，结构性机会集中在AI算力、PCB等板块，但需警惕地缘冲突对油价的冲击。"
+}
