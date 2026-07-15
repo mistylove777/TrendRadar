@@ -428,7 +428,7 @@ custom:
     midday_analysis:
       name: "午盘因子分析"
       start: "12:20"
-      end: "13:10"                 # 午间休市窗口
+      end: "15:10"                 # 午间休市窗口
       analyze: true                # 开启AI分析
       ai_mode: "daily"             # 分析上午盘全部新闻
       report_mode: "daily"
